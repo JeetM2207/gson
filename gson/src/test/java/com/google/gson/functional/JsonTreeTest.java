@@ -39,6 +39,19 @@ import org.junit.Test;
 public class JsonTreeTest {
   private Gson gson;
 
+
+
+  // https://github.com/google/gson/issues/2680: toJsonTree() on an Integer
+  // silently widened it to a Long (maintainer-confirmed regression from commit
+  // 3e3266cf, which routed all integral adapters through JsonWriter.value(long)).
+  // Expected: the resulting JsonPrimitive's number stays an Integer.
+  @Test
+  public void testToJsonTreeKeepsIntegerType() {
+    Integer testNum = 1;
+    JsonElement jsonTree = new Gson().toJsonTree(testNum);
+    assertThat(jsonTree.getAsNumber()).isInstanceOf(Integer.class);
+  }
+
   @Before
   public void setUp() throws Exception {
     gson = new Gson();
