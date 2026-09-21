@@ -229,7 +229,7 @@ public final class JsonPrimitive extends JsonElement {
    */
   @Override
   public int getAsInt() {
-    return isNumber() ? getAsNumber().intValue() : Integer.parseInt(getAsString());
+    if (isNumber()) { double doubleValue = getAsNumber().doubleValue(); if (doubleValue > Integer.MAX_VALUE || doubleValue < Integer.MIN_VALUE) { throw new NumberFormatException("Value is out of range for an int: " + doubleValue); } return getAsNumber().intValue(); } else { return Integer.parseInt(getAsString()); }
   }
 
   /**
