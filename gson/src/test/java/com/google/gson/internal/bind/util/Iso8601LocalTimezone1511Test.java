@@ -2,6 +2,7 @@ package com.google.gson.internal.bind.util;
 
 import static org.junit.Assert.assertEquals;
 
+import java.text.ParseException;
 import java.text.ParsePosition;
 import java.time.Instant;
 import java.util.Date;
@@ -29,7 +30,7 @@ public class Iso8601LocalTimezone1511Test {
   }
 
   @Test
-  public void testDateOnlyParseIsTimezoneIndependent() throws java.text.ParseException {
+  public void testDateOnlyParseIsTimezoneIndependent() throws ParseException {
     Date parsed = ISO8601Utils.parse("2019-03-20", new ParsePosition(0));
     assertEquals(Instant.parse("2019-03-20T00:00:00Z"), parsed.toInstant());
   }

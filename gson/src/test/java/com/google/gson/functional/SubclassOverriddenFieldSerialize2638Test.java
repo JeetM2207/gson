@@ -15,6 +15,7 @@ public class SubclassOverriddenFieldSerialize2638Test {
   }
 
   public static class SubClass extends MyClass {
+    @SuppressWarnings("HidingField") // the shadowed field is exactly what this bug is about
     int a = 25;
     int b = 12;
   }
