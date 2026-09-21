@@ -19,6 +19,7 @@ public class IntOverflowFromJsonObject1994Test {
   public void testFromJsonObjectRejectsLongOverflowingInt() {
     JsonObject jsonObject = new JsonObject();
     jsonObject.addProperty("foo", 10000000000L);
-    assertThrows(RuntimeException.class, () -> new Gson().fromJson(jsonObject, HasIntField.class));
+    Gson gson = new Gson();
+    assertThrows(RuntimeException.class, () -> gson.fromJson(jsonObject, HasIntField.class));
   }
 }

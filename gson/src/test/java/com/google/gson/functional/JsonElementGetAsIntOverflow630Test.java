@@ -2,6 +2,7 @@ package com.google.gson.functional;
 
 import static org.junit.Assert.assertThrows;
 
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.junit.Test;
@@ -13,6 +14,7 @@ public class JsonElementGetAsIntOverflow630Test {
   @Test
   public void testGetAsIntThrowsOnOutOfRangeExponentialValue() {
     JsonObject jsonObj = JsonParser.parseString("{\"id\":1e50}").getAsJsonObject();
-    assertThrows(RuntimeException.class, () -> jsonObj.get("id").getAsInt());
+    JsonElement idElement = jsonObj.get("id");
+    assertThrows(RuntimeException.class, idElement::getAsInt);
   }
 }
