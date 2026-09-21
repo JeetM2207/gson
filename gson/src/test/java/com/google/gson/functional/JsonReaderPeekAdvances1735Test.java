@@ -1,5 +1,7 @@
 package com.google.gson.functional;
 
+import static org.junit.Assert.assertEquals;
+
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.MalformedJsonException;
 import java.io.IOException;
@@ -17,12 +19,13 @@ public class JsonReaderPeekAdvances1735Test {
     reader.beginArray();
     for (int i = 0; i < 4; i++) {
       try {
-        reader.peek();
+        var unused = reader.peek();
       } catch (MalformedJsonException expected) {
         // expected
       }
     }
-    reader.nextInt();
+    int value = reader.nextInt();
     reader.endArray();
+    assertEquals(1, value);
   }
 }
