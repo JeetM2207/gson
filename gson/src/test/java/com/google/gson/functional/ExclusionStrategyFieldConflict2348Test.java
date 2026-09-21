@@ -16,6 +16,7 @@ import org.junit.Test;
 // field still collides with the subclass field and fromJson() throws.
 public class ExclusionStrategyFieldConflict2348Test {
   public static class BaseClass {
+    @SuppressWarnings("unused")
     @SerializedName("data")
     private Object data = null;
   }
@@ -31,7 +32,7 @@ public class ExclusionStrategyFieldConflict2348Test {
     builder.addDeserializationExclusionStrategy(new ExclusionStrategy() {
       @Override
       public boolean shouldSkipField(FieldAttributes f) {
-        return "data".equals(f.getName()) && Object.class.equals(f.getDeclaringClass());
+        return f.getName().equals("data") && Object.class.equals(f.getDeclaringClass());
       }
 
       @Override
