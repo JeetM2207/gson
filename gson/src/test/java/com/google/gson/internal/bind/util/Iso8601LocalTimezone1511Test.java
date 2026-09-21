@@ -29,7 +29,7 @@ public class Iso8601LocalTimezone1511Test {
   }
 
   @Test
-  public void testDateOnlyParseIsTimezoneIndependent() {
+  public void testDateOnlyParseIsTimezoneIndependent() throws java.text.ParseException {
     Date parsed = ISO8601Utils.parse("2019-03-20", new ParsePosition(0));
     assertEquals(Instant.parse("2019-03-20T00:00:00Z"), parsed.toInstant());
   }

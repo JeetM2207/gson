@@ -6,7 +6,7 @@ import static org.junit.Assert.assertNull;
 import com.google.gson.internal.bind.TypeAdapters;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.google.gson.stream.Strictness;
+import com.google.gson.Strictness;
 import java.io.StringReader;
 import java.io.StringWriter;
 import org.junit.Test;
