@@ -10,12 +10,13 @@ import org.junit.Test;
 // while a JSON number in the same position correctly raises an error.
 public class BooleanFromArbitraryString600Test {
   public static class HasBoolean {
-    public boolean isPRA;
+    public boolean isPra;
   }
 
   @Test
   public void testBooleanFieldRejectsNonBooleanString() {
-    assertThrows(RuntimeException.class, () ->
-        new Gson().fromJson("{\"isPRA\":\"ABC\"}", HasBoolean.class));
+    Gson gson = new Gson();
+    String json = "{\"isPra\":\"ABC\"}";
+    assertThrows(RuntimeException.class, () -> gson.fromJson(json, HasBoolean.class));
   }
 }
