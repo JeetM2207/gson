@@ -155,7 +155,7 @@ public final class TypeAdapters {
             return null;
           } else if (peek == JsonToken.STRING) {
             // support strings for compatibility with GSON 1.7
-            return Boolean.parseBoolean(in.nextString());
+            throw new JsonSyntaxException("Expected a boolean but was STRING");
           }
           return in.nextBoolean();
         }
