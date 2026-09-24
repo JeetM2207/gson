@@ -11,7 +11,7 @@ import org.junit.Test;
 // https://github.com/google/gson/issues/548:
 // Gson.fromJson(Reader, Type) should wrap underlying IOExceptions in JsonIOException,
 // not JsonSyntaxException. Network and I/O errors are distinct from JSON syntax errors.
-public class IOExceptionWrappedInJsonIOException548Test {
+public class IoExceptionWrappedInJsonIoException548Test {
   @Test
   public void testIOExceptionWrappedInJsonIOException() {
     Gson gson = new Gson();
